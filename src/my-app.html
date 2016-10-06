@@ -17659,7 +17659,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
 
     Polymer({
-      is: 'my-app'
+      is: 'my-app',
+      observers: [
+        '_routePageChanged(routeData.section)'
+      ],
+      _routePageChanged : function(section){
+        if(section == ''){
+          this.set('routeData.section', 'floors/floor-view1');
+        };
+      }
     });
 
   </script>
