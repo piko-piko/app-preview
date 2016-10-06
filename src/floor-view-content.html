@@ -1,0 +1,340 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="bootstrap-css.html">
+<link rel="import" href="floor-map.html">
+
+</head><body><dom-module id="floor-view-content">
+
+  <template>
+    <style include="bootstrap-css"></style>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .content {
+        background-color: var(--app-primary-color);
+        width: 100%;
+        padding: 50px 10px 15px;
+      }
+
+      .menu_icon_container {
+        display: flex;
+        flex-flow: row-reverse;
+      }
+      .menu_icon {
+        background: Transparent;
+        border: 0px;
+        color: white;
+        opacity: 0.55;
+      }
+      .menu_icon > iron-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .middle_bar {
+        width: 0px;
+        z-index: 1;
+      }
+      .middle_bar > .side_bar_btn {
+        background-color: #5A5A5A;
+        color: #969696;
+        width: 35px;
+        height: 100px;
+        border: 1px solid #969696;
+        border-right: 0;
+        border-radius: 10px 0 0 10px;
+        margin-top: 500px; /* around the middle of screen */
+        margin-left: -34px;
+        cursor: pointer;
+      }
+      .middle_bar > .show_btn {
+        display: inherit;
+      }
+      .middle_bar > .hide_btn {
+        display: none;
+      }
+
+      .side_bar {
+        background-color: #5A5A5A;
+        border-left: 1px solid #969696;
+        width: 700px;
+      }
+      .side_bar > .floor_title {
+        color: #ffffff;
+        font-weight: normal;
+        margin: 50px 0 0 25px;
+        font-size: 40px;
+      }
+      .side_bar > .table_container {
+        width: 450px;
+        height: 720px;
+        margin: 10px auto 0;
+        overflow-y: scroll;
+      }
+      .side_bar > .table_container > .device_table {
+        width: 100%;
+      }
+      .side_bar > .table_container > .device_table th {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 24px;
+        background: #000000;
+      }
+      .side_bar > .table_container > .device_table tr {
+        color: #ffffff;
+        font-size: 24px;
+        background-color: #A8A8A8;
+      }
+      .side_bar > .table_container > .device_table tr.green {
+        background-color: #22AC01;
+      }
+      .side_bar > .table_container > .device_table tr.yellow {
+        background-color: #D3BB00;
+      }
+      .side_bar > .table_container > .device_table tr.red {
+        background-color: #AD0000;
+      }
+
+    </style>
+
+    <div class="container">
+      <div class="content">
+        <!-- <div class="map"></div> -->
+        <floor-map pic="/images/floor-map.jpg"></floor-map>
+        <div class="menu_icon_container">
+          <a href="/setting/main-setting" class="menu_icon">
+            <iron-icon icon="icons:settings"></iron-icon>
+          </a>
+          <button type="button" class="menu_icon">
+            <iron-icon icon="icons:exit-to-app"></iron-icon>
+          </button>
+        </div>
+      </div>
+      <div class="middle_bar">
+        <button type="button" class="side_bar_btn show_btn">
+          <iron-icon icon="icons:chevron-left"></iron-icon>
+        </button>
+        <button type="button" class="side_bar_btn hide_btn">
+          <iron-icon icon="icons:chevron-right"></iron-icon>
+        </button>
+      </div>
+      <div class="side_bar">
+        <h1 class="floor_title"></h1>
+        <div class="table_container">
+          <table class="table device_table">
+            <thead>
+              <tr>
+                <th>ZBHH</th>
+                <th>Table Name</th>
+                <th>Timer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="red">
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr class="red">
+                <td>2</td>
+                <td>Bar</td>
+                <td>12:00</td>
+              </tr>
+              <tr class="yellow">
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr class="yellow">
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr class="green">
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr class="green">
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+              <tr>
+                <td>HH002</td>
+                <td>Table 07</td>
+                <td>12:00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'floor-view-content',
+      properties: {
+        name: {
+          type: String,
+          default: null
+        },
+        title: {
+          type: String,
+          default: "Untitled"
+        }
+      },
+      ready: function(){
+        console.log(this.name);
+        // Get floor detail here
+        switch(this.name){
+          case 'floor-view1':
+            this.title = 'Floor 01';
+            break;
+          case 'floor-view2':
+            this.title = 'Floor 02';
+            break;
+          case 'floor-view3':
+            this.title = 'Floor 03';
+            break;
+          case 'floor-view4':
+            this.title = 'Floor 04';
+            break;
+        }
+      },
+      attached: function(){
+        var sideBar = this.$$('.side_bar');
+        var showSideBarBtn = this.$$('.show_btn');
+        var hideSideBarBtn = this.$$('.hide_btn');
+
+        function toggleSideBar(){
+          if(sideBar.hasAttribute('show')){
+            sideBar.style.display = 'none';
+            showSideBarBtn.style.display = 'inherit';
+            hideSideBarBtn.style.display = 'none';
+            sideBar.removeAttribute('show');
+          }else{
+            sideBar.style.display = 'block';
+            showSideBarBtn.style.display = 'none';
+            hideSideBarBtn.style.display = 'inherit';
+            sideBar.setAttribute('show', true);
+          }
+        }
+
+        // init side bar
+        if(!sideBar.hasAttribute('show')){
+          sideBar.style.display = 'none';
+          showSideBarBtn.style.display = 'inherit';
+          hideSideBarBtn.style.display = 'none';
+          sideBar.removeAttribute('show');
+        }else{
+          sideBar.style.display = 'block';
+          showSideBarBtn.style.display = 'none';
+          hideSideBarBtn.style.display = 'inherit';
+          sideBar.setAttribute('show', true);
+        }
+
+        showSideBarBtn.addEventListener('click', function(){
+          toggleSideBar();
+        });
+        hideSideBarBtn.addEventListener('click', function(){
+          toggleSideBar();
+        });
+
+        this.$$('.floor_title').innerHTML = this.title;
+      }
+
+    });
+
+  </script>
+
+</dom-module>
+</body></html>

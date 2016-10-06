@@ -1,0 +1,94 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="main-setting.html">
+<link rel="import" href="floor-manage.html">
+<link rel="import" href="data-log.html">
+<link rel="import" href="shared-styles.html">
+
+</head><body><dom-module id="app-setting">
+
+  <template>
+
+    <style include="bootstrap-css"></style>
+    <style>
+      :host {
+        display: block;
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+        --app-primary-color: #F2F2F2;
+        --app-secondary-color: #E2E2E2;
+        --app-alert-color: #FF9D00;
+        --app-background-color: #9F9F9F;
+      }
+
+      .header_container {
+        display: flex;
+      }
+
+      .nav_bar, .nav_bar > a{
+        height: 80px;
+      }
+      .nav_bar {
+        display: flex;
+        width: 100%;
+        background-color: var(--app-background-color);
+        overflow-y: scroll;
+      }
+      .nav_bar > a{
+        display: inline-block;
+        background-color: var(--app-secondary-color);
+        border-right: 2px solid #6a6a6a;
+        flex: 1;
+        line-height: 80px;
+        padding-left: 10px;
+        max-width: 300px;
+        min-width: 180px;
+        text-decoration: none;
+        color: black;
+        font-size: 30px;
+        overflow: hidden;
+      }
+      .nav_bar > a.iron-selected{
+        background-color: var(--app-primary-color);
+      }
+
+    </style>
+
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{routeTail}}"></app-route>
+
+    <div class="header_container">
+      <iron-selector class="nav_bar" selected="[[routeData.page]]" attr-for-selected="name" role="navigation">
+        <a name="main-setting" href="/setting/main-setting">Setting</a>
+        <a name="floor-manage" href="/setting/floor-manage">Floor Management</a>
+        <a name="data-log" href="/setting/data-log">Data Log</a>
+      </iron-selector>
+    </div>
+
+    <iron-pages selected="[[routeData.page]]" attr-for-selected="name" fallback-selection="view404">
+      <main-setting name="main-setting"></main-setting>
+      <floor-manage name="floor-manage"></floor-manage>
+      <data-log name="data-log"></data-log>
+      <my-view404 name="view404"></my-view404>
+    </iron-pages>
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'app-setting'
+
+    });
+
+  </script>
+
+</dom-module>
+</body></html>

@@ -1,0 +1,163 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="bootstrap-css.html">
+<link rel="import" href="shared-styles.html">
+
+</head><body><dom-module id="main-setting">
+
+  <template>
+
+    <style include="bootstrap-css"></style>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .content {
+        background-color: var(--app-primary-color);
+        width: 100%;
+        padding: 30px 10px 15px;
+      }
+      .main {
+        height: 870px;
+        display: flex;
+        flex-flow: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+
+      .menu_icon_container {
+        display: flex;
+        flex-flow: row-reverse;
+      }
+      .menu_icon {
+        background: Transparent;
+        border: 0px;
+        color: #9F9F9F;
+        opacity: 0.55;
+      }
+      .menu_icon > iron-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .panel-body {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      .serial-setting-panel {
+        width: 600px;
+      }
+      .call-duration-setting-panel {
+        width: 600px;
+      }
+      .change-password-setting-panel {
+        width: 600px;
+      }
+      .change-password-setting-panel #edit-guest-password {
+        padding-bottom: 30px
+      }
+
+      .btn-container {
+        display: flex;
+        flex-flow: row-reverse;
+        margin-top: 10px;
+      }
+      .btn-container > button:last-of-type {
+        margin-right: 10px;
+      }
+    </style>
+
+    <div class="container">
+      <div class="content">
+        <div class="main">
+          <div class="panel panel-primary serial-setting-panel">
+            <div class="panel-heading">Serial Setting</div>
+            <div class="panel-body">
+              <label for="com-port">COM Port</label>
+              <select id="com-port" class="form-control">
+                <option>COM1</option>
+                <option>COM2</option>
+                <option>COM3</option>
+                <option>COM4</option>
+              </select>
+              <div class="btn-container">
+                <button type="button" class="btn btn-warning">Restore to Default</button>
+                <button type="button" class="btn btn-success">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-primary call-duration-setting-panel">
+            <div class="panel-heading">Calling Alert Duration</div>
+            <div class="panel-body">
+              <label for="1st-alert">1st Alert (sec)</label>
+              <input type="number" id="1st-alert" class="form-control" value="30">
+              <label for="2nd-alert">2nd Alert (sec)</label>
+              <input type="number" id="2nd-alert" class="form-control" value="60">
+              <div class="btn-container">
+                <button type="button" class="btn btn-warning">Restore to Default</button>
+                <button type="button" class="btn btn-success">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-primary change-password-setting-panel">
+            <div class="panel-heading">Change Password</div>
+            <div class="panel-body">
+              <div id="edit-guest-password">
+                <label for="guest-password">Guest Password</label>
+                <input type="password" id="guest-password" class="form-control" value="password">
+                <label for="re-guest-password">Re-Enter Guest Password</label>
+                <input type="password" id="re-guest-password" class="form-control" value="password">
+                <div class="btn-container">
+                  <button type="button" class="btn btn-warning">Restore to Default</button>
+                  <button type="button" class="btn btn-success">Save</button>
+                </div>
+              </div>
+              <div id="edit-admin-password">
+                <label for="admin-password">Administrator Password</label>
+                <input type="password" id="admin-password" class="form-control" value="password">
+                <label for="re-admin-password">Re-Enter Administrator Password</label>
+                <input type="password" id="re-admin-password" class="form-control" value="password">
+                <div class="btn-container">
+                  <button type="button" class="btn btn-warning">Restore to Default</button>
+                  <button type="button" class="btn btn-success">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu_icon_container">
+          <a href="/floors/floor-view1" class="menu_icon">
+            <iron-icon icon="icons:arrow-back"></iron-icon>
+          </a>
+        </div>
+      </div>
+
+  </div></template>
+
+  <script>
+
+    Polymer({
+
+      is: 'main-setting'
+
+    });
+
+  </script>
+
+</dom-module>
+</body></html>

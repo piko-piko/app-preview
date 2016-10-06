@@ -1,0 +1,120 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="floor-view-content.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="bootstrap-css.html">
+
+</head><body><dom-module id="floor-view">
+
+  <template>
+
+    <style include="bootstrap-css"></style>
+    <style>
+      :host {
+        display: block;
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+        --app-primary-color: #0184AC;
+        --app-secondary-color: #8AB5C3;
+        --app-alert-color: #FF9D00;
+        --app-background-color: #9F9F9F;
+      }
+
+      .header_container {
+        display: flex;
+      }
+
+      .nav_bar, .nav_bar > a{
+        height: 80px;
+      }
+      .nav_bar {
+        display: flex;
+        width: 100%;
+        background-color: var(--app-background-color);
+        overflow-y: scroll;
+      }
+      .nav_bar > a{
+        display: inline-block;
+        background-color: var(--app-secondary-color);
+        border-right: 2px solid #6a6a6a;
+        flex: 1;
+        line-height: 80px;
+        padding-left: 10px;
+        max-width: 240px;
+        min-width: 180px;
+        text-decoration: none;
+        color: white;
+        font-size: 30px;
+      }
+      .nav_bar > a.iron-selected{
+        background-color: var(--app-primary-color);
+      }
+
+      .zbhh_caller {
+        width: 400px;
+        background-color: #ffffff;
+        line-height: 75px;
+        padding-left: 10px;
+        font-size: 25px;
+        color: #8e8e8e;
+      }
+      .zbhh_selector {
+        min-width: 200px;
+      }
+    </style>
+
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{routeTail}}"></app-route>
+
+    <div class="header_container">
+      <iron-selector class="nav_bar" selected="[[routeData.page]]" attr-for-selected="name" role="navigation">
+        <a name="floor-view1" href="/floors/floor-view1">View Floor 1</a>
+        <a name="floor-view2" href="/floors/floor-view2">View Floor 2</a>
+        <a name="floor-view3" href="/floors/floor-view3">View Floor 3</a>
+        <a name="floor-view4" href="/floors/floor-view4">View Floor 4</a>
+      </iron-selector>
+      <div class="form-inline zbhh_caller">
+        <div class="form-group">
+          <label for="zbhh">CALL: </label>
+          <select id="zbhh" class="form-control zbhh_selector">
+            <option>ZBHH1</option>
+            <option>ZBHH2</option>
+            <option>ZBHH3</option>
+            <option>ZBHH4</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <iron-pages selected="[[routeData.page]]" attr-for-selected="name" fallback-selection="view404">
+      <floor-view-content name="floor-view1"></floor-view-content>
+      <floor-view-content name="floor-view2"></floor-view-content>
+      <floor-view-content name="floor-view3"></floor-view-content>
+      <floor-view-content name="floor-view4"></floor-view-content>
+      <my-view404 name="view404"></my-view404>
+    </iron-pages>
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'floor-view'
+
+    });
+
+  </script>
+
+</dom-module>
+</body></html>

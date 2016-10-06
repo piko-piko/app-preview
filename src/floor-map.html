@@ -1,0 +1,33 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+</head><body><dom-module id="floor-map">
+  <style include="shared-styles">
+    .map {
+      /*background-color: rgb(114, 238, 15);*/
+      width: 1200px;
+      height: 860px;
+      margin: 0 auto 10px;
+    }
+  </style>
+  <template>
+    <div class="map">
+
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'floor-map',
+      properties: {
+        pic: String
+      },
+      attached: function(){
+        var map = this.$$('.map');
+        map.style.backgroundImage="url("+this.pic+")";
+      }
+    });
+  </script>
+
+</dom-module>
+</body></html>

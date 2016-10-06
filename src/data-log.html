@@ -1,0 +1,77 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+</head><body><dom-module id="data-log">
+
+  <template>
+
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .content {
+        background-color: var(--app-primary-color);
+        width: 100%;
+        padding: 30px 10px 15px;
+      }
+      .main {
+        height: 870px;
+      }
+
+      .menu_icon_container {
+        display: flex;
+        flex-flow: row-reverse;
+      }
+      .menu_icon {
+        background: Transparent;
+        border: 0px;
+        color: #9F9F9F;
+        opacity: 0.55;
+      }
+      .menu_icon > iron-icon {
+        width: 60px;
+        height: 60px;
+      }
+    </style>
+
+    <div class="container">
+      <div class="content">
+        <div class="main">
+          <h1>Data Log</h1>
+        </div>
+        <div class="menu_icon_container">
+          <a href="/floors/floor-view1" class="menu_icon">
+            <iron-icon icon="icons:arrow-back"></iron-icon>
+          </a>
+        </div>
+      </div>
+
+  </div></template>
+
+  <script>
+
+    Polymer({
+
+      is: 'data-log'
+
+    });
+
+  </script>
+
+</dom-module>
+</body></html>
